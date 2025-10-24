@@ -1,0 +1,150 @@
+1. Tổng quan bảng chính (entities)
+
+Movies — thông tin phim
+
+Theatres — rạp / phòng chiếu
+
+Seats — từng ghế trong phòng (layout)
+
+Showtimes — suất chiếu (một phim + phòng + thời gian)
+
+Bookings — đơn đặt vé (order)
+
+BookingSeats — ghế cụ thể trong một booking (n-1 từ Bookings)
+
+Users — người dùng / khách hàng
+
+Payments — thông tin thanh toán (mô phỏng)
+
+SeatLocks — optional: lock ghế tạm thời trong quá trình thanh toán
+
+2. Thiết kế bảng chi tiết (SQL-like + giải thích)
+
+Các kiểu dữ liệu dùng SQL Server-ish (tùy đổi cho Postgres). Tôi thêm các cột để test (Version/RowVersion, LockToken, ReservedUntil, IsCorruptedFlag) để bạn dễ simulate và verify.
+
+Movies
+CREATE TABLE Movies (
+  MovieId        UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+  Title          NVARCHAR(200) NOT NULL,
+  Description    NVARCHAR(MAX) NULL,
+  DurationMin    INT NOT NULL,
+  Genre          NVARCHAR(100) NULL,
+  ReleaseDate    DATE NULL,
+  CreatedAt      DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME()
+);
+
+Theatres
+CREATE TABLE Theatres (
+  TheatreId      UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+  Name           NVARCHAR(150) NOT NULL,
+  Rows           INT NOT NULL,           -- số hàng
+  Columns        INT NOT NULL,           -- số cột
+  CreatedAt      DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME()
+);
+
+Seats — từng ghế cố định trong phòng (tạo 1 bản ghi cho mỗi vị trí)
+CREATE TABLE Seats (
+  SeatId         UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+  TheatreId      UNIQUEIDENTIFIER NOT NULL REFERENCES Theatres(TheatreId),
+  RowNumber      INT NOT NULL,           -- 1..Rows
+  ColumnNumber   INT NOT NULL,           -- 1..Columns
+  IsVip          BIT NOT NULL DEFAULT 0,
+  SeatCode       NVARCHAR(10) NOT NULL,  -- "A1", "B12" (unique per theatre)
+  CreatedAt      DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME(),
+  CONSTRAINT UQ_Seat_Theatre_Row_Col UNIQUE (TheatreId, RowNumber, ColumnNumber),
+  CONSTRAINT UQ_Seat_Theatre_SeatCode UNIQUE (TheatreId, SeatCode)
+);
+CREATE INDEX IX_Seats_Theatre ON Seats(TheatreId);
+
+Showtimes — một suất chiếu cụ thể
+CREATE TABLE Showtimes (
+  ShowtimeId     UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+  MovieId        UNIQUEIDENTIFIER NOT NULL REFERENCES Movies(MovieId),
+  TheatreId      UNIQUEIDENTIFIER NOT NULL REFERENCES Theatres(TheatreId),
+  StartAt        DATETIME2 NOT NULL,
+  EndAt          DATETIME2 NOT NULL,
+  CreatedAt      DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME()
+);
+CREATE INDEX IX_Showtimes_Theatre_StartAt ON Showtimes(TheatreId, StartAt);
+
+Bookings — đơn đặt vé (order)
+CREATE TABLE Bookings (
+  BookingId      UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+  UserId         UNIQUEIDENTIFIER NULL REFERENCES Users(UserId),
+  ShowtimeId     UNIQUEIDENTIFIER NOT NULL REFERENCES Showtimes(ShowtimeId),
+  Status         NVARCHAR(30) NOT NULL, -- e.g. Pending, Confirmed, Cancelled, Expired
+  TotalAmount    DECIMAL(10,2) NOT NULL DEFAULT 0,
+  CreatedAt      DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME(),
+  ReservedUntil  DATETIME2 NULL,        -- thời gian chờ thanh toán (để auto-release)
+  Version        BIGINT NOT NULL DEFAULT 1,
+  RowVersion     ROWVERSION,            -- dùng cho optimistic concurrency
+  Note           NVARCHAR(500) NULL
+);
+CREATE INDEX IX_Bookings_ShowtimeStatus ON Bookings(ShowtimeId, Status);
+
+BookingSeats — mapping booking -> ghế
+CREATE TABLE BookingSeats (
+  BookingSeatId  UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+  BookingId      UNIQUEIDENTIFIER NOT NULL REFERENCES Bookings(BookingId) ON DELETE CASCADE,
+  SeatId         UNIQUEIDENTIFIER NOT NULL REFERENCES Seats(SeatId),
+  Price          DECIMAL(10,2) NOT NULL,
+  Status         NVARCHAR(30) NOT NULL, -- e.g. Booked, Released
+  CreatedAt      DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME(),
+  CONSTRAINT UQ_BookingSeats_Showtime_Seat UNIQUE (BookingId, SeatId)
+);
+CREATE INDEX IX_BookingSeats_SeatId ON BookingSeats(SeatId);
+
+
+Important invariant: Một ghế (SeatId) trong một ShowtimeId chỉ được book bởi tối đa 1 Confirmed booking. (Cần enforce bằng transaction + check logic trong app layer — DB check bằng unique index yêu cầu showtime context, xem dưới)
+
+Option: nếu muốn enforce ở DB-level, bạn cần table trung gian SeatStatusPerShowtime (xem dưới).
+
+SeatStatusPerShowtime — (tùy chọn nhưng recommend) trạng thái ghế cho mỗi suất chiếu
+CREATE TABLE SeatStatusPerShowtime (
+  SeatStatusId   UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+  ShowtimeId     UNIQUEIDENTIFIER NOT NULL REFERENCES Showtimes(ShowtimeId),
+  SeatId         UNIQUEIDENTIFIER NOT NULL REFERENCES Seats(SeatId),
+  Status         NVARCHAR(30) NOT NULL DEFAULT 'Available', -- Available, Locked, Booked
+  LockToken      UNIQUEIDENTIFIER NULL,   -- nếu Locked thì token
+  LockedUntil    DATETIME2 NULL,
+  BookingId      UNIQUEIDENTIFIER NULL REFERENCES Bookings(BookingId),
+  IsCorrupted    BIT NOT NULL DEFAULT 0,  -- phục vụ test corruption detect
+  RowVersion     ROWVERSION,
+  CONSTRAINT UQ_SeatStatus_Showtime_Seat UNIQUE (ShowtimeId, SeatId)
+);
+CREATE INDEX IX_SeatStatus_ShowtimeStatus ON SeatStatusPerShowtime(ShowtimeId, Status);
+
+
+Lý do: có SeatStatusPerShowtime giúp bạn dễ enforce unique constraint (ShowtimeId + SeatId unique), track lock và detect corruption (IsCorrupted flag).
+
+Users
+CREATE TABLE Users (
+  UserId         UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+  Username       NVARCHAR(100) NOT NULL,
+  Email          NVARCHAR(200) NULL,
+  Phone          NVARCHAR(20) NULL,
+  CreatedAt      DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME()
+);
+CREATE INDEX IX_Users_Username ON Users(Username);
+
+Payments
+CREATE TABLE Payments (
+  PaymentId      UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+  BookingId      UNIQUEIDENTIFIER NOT NULL REFERENCES Bookings(BookingId),
+  Amount         DECIMAL(10,2) NOT NULL,
+  Status         NVARCHAR(30) NOT NULL, -- Pending, Success, Failed, Refunded
+  Provider       NVARCHAR(50) NULL,
+  CreatedAt      DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME()
+);
+
+SeatLocks — optional (alternate to SeatStatusPerShowtime)
+CREATE TABLE SeatLocks (
+  SeatLockId     UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+  ShowtimeId     UNIQUEIDENTIFIER NOT NULL,
+  SeatId         UNIQUEIDENTIFIER NOT NULL,
+  LockToken      UNIQUEIDENTIFIER NOT NULL DEFAULT NEWID(),
+  LockedBy       UNIQUEIDENTIFIER NULL, -- UserId
+  LockedAt       DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME(),
+  LockedUntil    DATETIME2 NOT NULL,
+  CONSTRAINT UQ_SeatLocks_Showtime_Seat UNIQUE (ShowtimeId, SeatId)
+);
