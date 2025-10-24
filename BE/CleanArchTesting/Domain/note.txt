@@ -1,0 +1,1 @@
+﻿dotnet ef dbcontext scaffold "Server=localhost,1433;Database=Cinema;User Id=sa;Password=StrongP@ssword1;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -o Entities --data-annotations --context CinemaDbContext --use-database-names
