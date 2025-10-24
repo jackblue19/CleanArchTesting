@@ -41,8 +41,12 @@ public partial class CinemaDbContext : DbContext
     public virtual DbSet<VoucherRedemption> VoucherRedemptions { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost,1433;Database=Cinema;User Id=sa;Password=StrongP@ssword1;TrustServerCertificate=True");
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("Data Source=LAPTOP-7KVDNDSP;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=True;Command Timeout=0");
+        }
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -56,6 +60,11 @@ public partial class CinemaDbContext : DbContext
         modelBuilder.Entity<Movie>(entity =>
         {
             entity.HasKey(e => e.MovieId).HasName("PK__Movies__4BD2941ADA6D9A45");
+
+            entity.HasData(
+                new Movie { MovieId = 1, Title = "Inception", AgeRating = 13 },
+                new Movie { MovieId = 2, Title = "The Grand Budapest Hotel", AgeRating = 15 }
+            );
         });
 
         modelBuilder.Entity<PriceAdjustment>(entity =>
@@ -71,7 +80,7 @@ public partial class CinemaDbContext : DbContext
         {
             entity.HasKey(e => e.ReservationId).HasName("PK__Reservat__B7EE5F24E50E1B09");
 
-            entity.HasIndex(e => new { e.ShowId , e.SeatId } , "UX_Reservations_UniqueActive")
+            entity.HasIndex(e => new { e.ShowId, e.SeatId }, "UX_Reservations_UniqueActive")
                 .IsUnique()
                 .HasFilter("([Status] IN ('HELD', 'BOOKED'))");
 
@@ -79,7 +88,7 @@ public partial class CinemaDbContext : DbContext
             entity.Property(e => e.RowVersion)
                 .IsRowVersion()
                 .IsConcurrencyToken();
-            entity.Property(e => e.Total).HasComputedColumnSql("(case when ([Subtotal]-[Discount])<(0) then (0) else [Subtotal]-[Discount] end)" , true);
+            entity.Property(e => e.Total).HasComputedColumnSql("(case when ([Subtotal]-[Discount])<(0) then (0) else [Subtotal]-[Discount] end)", true);
 
             entity.HasOne(d => d.Seat).WithMany(p => p.Reservations)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -124,6 +133,11 @@ public partial class CinemaDbContext : DbContext
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.UserId).HasName("PK__Users__1788CC4C9A66635C");
+
+            entity.HasData(
+                new User { UserId = 1, Email = "alice@example.com" },
+                new User { UserId = 2, Email = "bob@example.com" }
+            );
         });
 
         modelBuilder.Entity<VShowOccupancy>(entity =>
