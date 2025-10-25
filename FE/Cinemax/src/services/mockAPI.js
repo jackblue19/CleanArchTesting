@@ -22,6 +22,7 @@ const mockSeats = {
   ],
 };
 
+
 // Mô phỏng API call với độ trễ nhỏ
 const mockApi = {
   getMovies: () => new Promise(resolve => setTimeout(() => resolve(mockMovies), 500)),
@@ -40,3 +41,5 @@ const mockApi = {
     }, 500);
   }),
 };
+
+export default mockApi;

@@ -1,3 +1,5 @@
+import { useAuth } from "../../hook/useAuth";
+import Button from "../common/Button";
 const Header = ({ navigate }) => {
   const { user, logout } = useAuth();
   return (

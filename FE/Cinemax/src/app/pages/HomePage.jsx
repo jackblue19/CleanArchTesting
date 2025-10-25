@@ -1,3 +1,10 @@
+import React from "react";
+import useFetch from "../../hook/useFetch";
+import MainLayout from "../layout/MainLayout";
+import Spinner from "../../components/common/Spinner";
+import mockApi from "../../services/mockAPI";
+
+
 const HomePage = ({ navigate }) => {
   // Sử dụng useFetch để mô phỏng data fetching và quản lý trạng thái tải
   const fetchMovies = React.useCallback(() => mockApi.getMovies(), []);
