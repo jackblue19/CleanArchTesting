@@ -33,8 +33,6 @@
 
   <ItemGroup>
     <Folder Include="Persistence\" />
-    <Folder Include="Services\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>
