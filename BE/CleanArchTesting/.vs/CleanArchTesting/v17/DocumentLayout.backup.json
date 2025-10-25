@@ -1,0 +1,212 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|d:\\prn_groub\\cleanarchtesting\\be\\cleanarchtesting\\domain\\enums\\pricingenums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\pricingenums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|d:\\prn_groub\\cleanarchtesting\\be\\cleanarchtesting\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|solutionrelative:domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|d:\\prn_groub\\cleanarchtesting\\be\\cleanarchtesting\\domain\\valueobjects\\email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|solutionrelative:domain\\valueobjects\\email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|d:\\prn_groub\\cleanarchtesting\\be\\cleanarchtesting\\domain\\enums\\reservationstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\reservationstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|d:\\prn_groub\\cleanarchtesting\\be\\cleanarchtesting\\domain\\enums\\seattype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\seattype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|d:\\prn_groub\\cleanarchtesting\\be\\cleanarchtesting\\domain\\valueobjects\\idempotencykey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|solutionrelative:domain\\valueobjects\\idempotencykey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|d:\\prn_groub\\cleanarchtesting\\be\\cleanarchtesting\\domain\\valueobjects\\seatposition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|solutionrelative:domain\\valueobjects\\seatposition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|d:\\prn_groub\\cleanarchtesting\\be\\cleanarchtesting\\domain\\valueobjects\\money.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6B0701F-3D02-4665-BA63-E11885CF5392}|Domain\\Domain.csproj|solutionrelative:domain\\valueobjects\\money.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PricingEnums.cs",
+              "DocumentMoniker": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\Enums\\PricingEnums.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\PricingEnums.cs",
+              "ToolTip": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\Enums\\PricingEnums.cs",
+              "RelativeToolTip": "Domain\\Enums\\PricingEnums.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T02:24:11.701Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ReservationStatus.cs",
+              "DocumentMoniker": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\Enums\\ReservationStatus.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\ReservationStatus.cs",
+              "ToolTip": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\Enums\\ReservationStatus.cs",
+              "RelativeToolTip": "Domain\\Enums\\ReservationStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T02:07:04.358Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SeatType.cs",
+              "DocumentMoniker": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\Enums\\SeatType.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\SeatType.cs",
+              "ToolTip": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\Enums\\SeatType.cs",
+              "RelativeToolTip": "Domain\\Enums\\SeatType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T02:06:48.288Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IdempotencyKey.cs",
+              "DocumentMoniker": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\ValueObjects\\IdempotencyKey.cs",
+              "RelativeDocumentMoniker": "Domain\\ValueObjects\\IdempotencyKey.cs",
+              "ToolTip": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\ValueObjects\\IdempotencyKey.cs",
+              "RelativeToolTip": "Domain\\ValueObjects\\IdempotencyKey.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T02:04:49.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SeatPosition.cs",
+              "DocumentMoniker": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\ValueObjects\\SeatPosition.cs",
+              "RelativeDocumentMoniker": "Domain\\ValueObjects\\SeatPosition.cs",
+              "ToolTip": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\ValueObjects\\SeatPosition.cs",
+              "RelativeToolTip": "Domain\\ValueObjects\\SeatPosition.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T02:04:17.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Money.cs",
+              "DocumentMoniker": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\ValueObjects\\Money.cs",
+              "RelativeDocumentMoniker": "Domain\\ValueObjects\\Money.cs",
+              "ToolTip": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\ValueObjects\\Money.cs",
+              "RelativeToolTip": "Domain\\ValueObjects\\Money.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T02:01:51.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Email.cs",
+              "DocumentMoniker": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\ValueObjects\\Email.cs",
+              "RelativeDocumentMoniker": "Domain\\ValueObjects\\Email.cs",
+              "ToolTip": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\ValueObjects\\Email.cs",
+              "RelativeToolTip": "Domain\\ValueObjects\\Email.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T01:54:44.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Domain",
+              "DocumentMoniker": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\Domain.csproj",
+              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
+              "ToolTip": "D:\\PRN_Groub\\CleanArchTesting\\BE\\CleanArchTesting\\Domain\\Domain.csproj",
+              "RelativeToolTip": "Domain\\Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-25T01:54:06.74Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1191,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:50:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 77,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

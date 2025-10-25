@@ -1,0 +1,15 @@
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\bin\Debug\net8.0\Domain.deps.json
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\bin\Debug\net8.0\Domain.runtimeconfig.json
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\bin\Debug\net8.0\Domain.dll
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\bin\Debug\net8.0\Domain.pdb
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\obj\Debug\net8.0\Domain.dll
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\obj\Debug\net8.0\refint\Domain.dll
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\obj\Debug\net8.0\Domain.pdb
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\obj\Debug\net8.0\Domain.genruntimeconfig.cache
+D:\PRN_Groub\CleanArchTesting\BE\CleanArchTesting\Domain\obj\Debug\net8.0\ref\Domain.dll
